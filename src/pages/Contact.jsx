@@ -41,10 +41,18 @@ export default function Contact() {
 
           <div>
             <h2 className="text-lg font-bold text-navy">Interactive Map</h2>
-            <div className="mt-4 flex h-48 items-center justify-center rounded-lg border border-black/10">
-          
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49030.7134996896!2d-13.198770852675349!3d8.439978165458815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf04e803cb983c27%3A0x23573a5c3c13b9!2sWellington%2C%20Freetown!5e0!3m2!1sen!2ssl!4v1788271991438!5m2!1sen!2ssl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-              
+            <div className="mt-4 flex h-48 items-center justify-center overflow-hidden rounded-lg border border-black/10">
+              <iframe
+                title="Solar Solutions location map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d49030.7134996896!2d-13.198770852675349!3d8.439978165458815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf04e803cb983c27%3A0x23573a5c3c13b9!2sWellington%2C%20Freetown!5e0!3m2!1sen!2ssl!4v1788271991438!5m2!1sen!2ssl"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                className="h-full w-full"
+              />
             </div>
           </div>
         </div>
