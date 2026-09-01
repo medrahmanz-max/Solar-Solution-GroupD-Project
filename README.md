@@ -1,6 +1,7 @@
 
 Solar Solution
 Solar Solution is a collaborative web application designed to provide clean energy solutions and insights. This project was developed as a group initiative using React powered by Vite for a fast, modern web experience.
+Link to the website: https://solarsolutionsl.netlify.app
 
 👥 Team Members & Contributions
 Our team consists of 5 members, with each person taking ownership of specific pages and features:
