@@ -1,14 +1,29 @@
 import { useState } from 'react'
+import { submitContactForm } from '../lib/supabase.js'
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Contact form submitted:', form)
+    setError('')
+
+    setIsSubmitting(true)
+    const { error: submissionError } = await submitContactForm(form)
+
+    setIsSubmitting(false)
+
+    if (submissionError) {
+      console.error('Supabase insert error:', submissionError)
+      setError(`Error: ${submissionError.message || 'We could not send your message right now. Please try again.'}`)
+      return
+    }
+
     setSent(true)
   }
 
@@ -45,11 +60,15 @@ export default function ContactForm() {
         value={form.message} onChange={handleChange}
         className="rounded-md border-none bg-white px-4 py-3 text-sm text-ink outline-none focus:ring-2 focus:ring-gold sm:col-span-2"
       />
+      {error && (
+        <p role="alert" className="text-sm text-red-200 sm:col-span-2">{error}</p>
+      )}
       <button
         type="submit"
+        disabled={isSubmitting}
         className="rounded-md bg-gold px-6 py-3 font-display text-sm font-semibold text-navy hover:bg-goldlight sm:col-span-2"
       >
-        Contact
+        {isSubmitting ? 'Sending...' : 'Contact'}
       </button>
     </form>
   )
